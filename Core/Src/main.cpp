@@ -165,7 +165,8 @@ void Handle_Odom(void const * argument)
 	Float_As_Complement(odom_data.quaternion.z,11);
 	Float_As_Complement(odom_data.angular_speed,13);
 	Float_As_Complement(odom_data.linear_speed,15);
-    osDelay(3000);
+	HAL_UART_Transmit_DMA(&huart1, odom, sizeof(odom));
+    osDelay(50);
   }
   /* USER CODE END Handle_Odom */
 }
@@ -227,15 +228,13 @@ int main(void)
 
   odom[0]=0x55;
   odom[17]=0x1A;
-  twist[1]=0x0D;
-  twist[2]=0xDC;
   kinematics.set_motor_param(0, 30, 20, 65);
   kinematics.set_motor_param(1, 30, 20, 65);
   kinematics.set_kinematic_param(105,143,167);
   pid_controller[0].update_pid(0.3,0,0);
   pid_controller[1].update_pid(0.3,0,0);
-  pid_controller[0].out_limit(-10, 10);
-  pid_controller[1].out_limit(-10, 10);
+  pid_controller[0].out_limit(-100, 100);
+  pid_controller[1].out_limit(-100, 100);
 
   /* USER CODE END 2 */
 

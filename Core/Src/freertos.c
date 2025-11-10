@@ -125,7 +125,6 @@ void MX_FREERTOS_Init(void) {
   */
 /* USER CODE END Header_Handle_Twist */
 
-
 /* USER CODE BEGIN Header_Handle_Odom */
 /**
 * @brief Function implementing the Odom thread.
@@ -133,7 +132,6 @@ void MX_FREERTOS_Init(void) {
 * @retval None
 */
 /* USER CODE END Header_Handle_Odom */
-
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
